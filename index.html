@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Play Box Critters</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui, shrink-to-fit=no viewport-fit=cover">
+
+    
+<!-- Head -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://boxcritters.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://boxcritters.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://boxcritters.com/favicon-16x16.png">
+
+<!-- Facebook Card -->
+<meta property="og:title" content="Box Critters" />
+<meta property="og:url" content="https://play.boxcritters.com" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Box Critters is a New Virtual World by RocketSnail! The idea is to create new world, inspired by Club Penguin. My goal is to make this world widely accessible for browser, mobile and desktop." />
+<meta property="og:image" content="http://boxcritters.com/images/cards/box_critters.jpg" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="400" />
+
+<!-- Twitter Card -->
+<meta name="twitter:title" content="Box Critters">
+<meta name="twitter:description" content="Box Critters is a New Virtual World by RocketSnail! The idea is to create new world, inspired by Club Penguin.">
+<meta name="twitter:image" content="http://play.boxcritters.com/images/cards/box_critters.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@boxcritters">
+
+    <link rel="stylesheet" href="https://boxcritters.com/vendor/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="world" class="container">
+
+    <div class="row justify-content-center m-0">
+
+        <div class="col-xl-10 p-0">
+            <canvas id="stage" width="855" height="480" style="background-color: #EEEEEE; width: 100%"></canvas>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-center m-0">
+
+        <div class="col-lg-6 col-md">
+            <div id="chat" class="mt-2">
+                <form class="form chat-form" autocomplete="off">
+                    <div class="input-group">
+                        <input id="message" type="text" class="form-control" maxlength="60">
+                        <span class="input-group-btn" style="touch-action: none;">
+                            <button type="submit" class="btn btn-primary btn-lg">Send</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-auto">
+            <div id="menu">
+                <span class="input-group-btn" style="touch-action: none;">
+                    <button class="btn btn-link p-0">
+                        <img src="https://boxcritters.com/images/menu/Btn_Menu_Chat_A.png" height="60">
+                    </button>
+                </span>
+                <span class="input-group-btn" style="touch-action: none;">
+                    <button class="btn btn-link p-0">
+                        <img src="https://boxcritters.com/images/menu/Btn_Menu_Cards_A.png" height="60">
+                    </button>
+                </span>
+                <span class="input-group-btn" style="touch-action: none;">
+                    <button class="btn btn-link p-0" onclick="world.showInventory()">
+                        <img src="https://boxcritters.com/images/menu/Btn_Menu_Items_A.png" height="60">
+                    </button>
+                </span>
+                <span class="input-group-btn" style="touch-action: none;">
+                    <button class="btn btn-link p-0" onclick="world.emit('showShop')">
+                        <img src="https://boxcritters.com/images/menu/Btn_Menu_Shop_A.png" height="60">
+                    </button>
+                </span>
+                <span class="input-group-btn" style="touch-action: none;">
+                    <button class="btn btn-link p-0">
+                        <img src="https://boxcritters.com/images/menu/Btn_Menu_Misc_A.png" height="60">
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-4 justify-content-center">
+            <div class="col col-sm-10 col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        Mini Game Testing
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            We need your help testing new games!</p>
+                        <a href="https://boxcritters.com/games/critterclimb/v2/" target="_blank" class="btn btn-primary">Play Critter Climb</a>
+                        <a href="https://boxcritters.com/games/cardgame3/" target="_blank" class="btn btn-primary">Play Card Game</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 m-0">
+
+            <div class="col p-0 text-center">
+                <button class="btn btn-info" onclick="mobile();">Test Mobile</button>
+                <button class="btn btn-secondary" onclick="cheerio();">Sign out</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Foot-->
+
+<div id="footer" class="container mb-4 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <p class="mt-1 mb-1 text-muted text-center small">Created by <a href="https://rocketsnail.com" target=”_blank”>RocketSnail</a></p>
+            <p class="mt-1 mb-1 text-muted text-center small">Powered by the amazing team at <a href="https://hyperhippo.ca" target=”_blank”>Hyper Hippo Labs</a></p>
+            <p class="mt-1 mb-1 text-muted text-center small">&copy;2019-2021 Hyper Hippo Entertainment Ltd. Box Critters is a trademark of Hyper Hippo Entertainment Ltd. RocketSnail and the RocketSnail Logo are the trademarks of RocketSnail Games Ltd.</p>
+            <a href="https://hyperhippogames.com/privacy/" target=”_blank”>Privacy</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="https://boxcritters.com/vendor/js/bootstrap.min.js"></script>
+<script src="https://boxcritters.com/vendor/js/createjs.min.js"></script>
+<script src="https://boxcritters.com/vendor/js/socket.io.min.js"></script>
+
+<script src="https://boxcritters.com/lib/world-161.min.js"></script>
+<script src="https://boxcritters.com/lib/boot-22.min.js"></script>
+
+<script src="shop-16.js"></script>
+<script src="play-14.js"></script>
+
+<script>
+
+    function init() {
+
+        world = new client.World('stage');
+
+        world.preload({src: 'https://boxcritters.com/manifest.json', type: 'manifest'});
+
+        world.on('complete', function () {
+            world.connect('https://boxcritters.herokuapp.com');
+        });
+        world.on('connect', function () {
+            world.login(sessionStorage.getItem('sessionTicket'));
+        });
+        world.on('login', function (player) {
+            world.joinRoom('port');
+           ux.init();
+        });
+
+        world.on('darkmode', function () {
+            document.body.style.backgroundColor = 'black';
+        });
+
+        world.on('M', function (crumb) {
+            console.info('%c💬 ' + crumb.n + ': ' + crumb.m, 'font-size:medium');
+        })
+
+        world.on('showShop', function () {
+            let shop = new extra.Shop(world.player)
+                .scaleTo(world.stage.boot)
+                .alignTo(world.stage.boot, 'right')
+                .click();
+            world.stage.boot.addChild(shop);
+        })
+
+        world.on('addItem', function (data) {
+            let item = client.getItem(data.itemId);
+            //let url = item.icon.replace('icon.png', 'icon_sm.png');
+            let url = 'https://boxcritters.com/media/items/'+data.itemId+'/icon_sm.png';
+            let modal = new boot.Modal(world.stage.width, world.stage.height, true);
+            let text = new boot.Text(item.name, {
+                lineWidth: 360,
+                textAlign: 'center',
+                fontName: 'Luckiest Guy',
+                fontSize: 40,
+                theme: 'dark',
+                outline: 4
+            }).centerTo(modal).bump(0, 40);
+            let icon = new boot.Image(url,200,200).centerTo(modal).attachTo(text, 'above');
+            modal.addChild(text, icon);
+            world.stage.boot.addChild(modal);
+            modal.on('click', function () {
+                world.stage.boot.removeChild(modal);
+            })
+        })
+
+        function handleKeypress(e) {
+            if (e.code === 'Enter') {
+                let message = document.getElementById("message");
+                message.focus();
+            }
+        }
+
+        const chatElement = document.getElementById("chat");
+        chatElement.addEventListener('submit', function (e) {
+            e.preventDefault();
+            sendMessage();
+        });
+
+        function sendMessage() {
+            let message = document.getElementById("message");
+            if (message.value.length > 0) {
+                world.message(message.value);
+                message.value = '';
+                message.focus();
+            } else {
+                message.focus();
+            }
+        }
+
+    }
+
+    function cheerio() {
+        sessionStorage.removeItem('sessionTicket');
+        window.location.href = "cheerio.html";
+    }
+
+    if (sessionStorage.getItem('sessionTicket')) {
+        document.addEventListener('DOMContentLoaded', init);
+
+</script>
+
+<script>
+
+    function mobile() {
+
+        document.body.requestFullscreen();
+
+        //if (window.innerWidth < 576) {
+        let stageElement = document.getElementById("stage");
+        var ctx = stageElement.getContext("2d");
+        ctx.canvas.width = 360;
+        world.stage.width = 360;
+        world.stage.boot.width = 360;
+        world.stage.room.focus();
+        //}
+    }
+
+</script>
+
+</body>
+          </html>
+  
